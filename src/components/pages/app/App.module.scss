@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  height: 100vh;
+  background-color: #030303;
+}
+
+
+.side-nav  {
+  width: 240px;
+  min-width: 240px;
+}
+
+.main  {
+  color: white;
+  width: calc(100vw - 240px);
+  min-width: 1000px;
+  overflow-x: auto;
+  background-color: #030303;
+}

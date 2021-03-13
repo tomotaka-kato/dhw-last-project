@@ -1,0 +1,15 @@
+.main {
+
+  .taskArea {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    .board {
+      background-color: #262626;
+      width: 272px;
+      min-height: 100px;
+      border-radius: 5px;
+    }
+  }
+
+}
