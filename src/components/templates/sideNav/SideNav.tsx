@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './sideNav.module.scss';
 
 interface Prop {

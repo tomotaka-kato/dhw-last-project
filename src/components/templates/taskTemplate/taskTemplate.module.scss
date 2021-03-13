@@ -3,7 +3,8 @@
   .taskArea {
     display: flex;
     justify-content: space-around;
-    align-items: start;
+    align-items: flex-start;
+
     .board {
       background-color: #262626;
       width: 272px;
