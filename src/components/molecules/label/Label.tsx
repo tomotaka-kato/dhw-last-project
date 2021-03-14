@@ -7,7 +7,7 @@ interface Prop {
 }
 
 const render = (prop: Prop) => (
-  <p className={style.label}>
+  <p className={style.label} style={{ border: `1px solid ${prop.color}` }}>
     <TagIcon color={prop.color} />
     <span>{prop.text}</span>
   </p>

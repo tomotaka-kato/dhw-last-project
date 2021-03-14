@@ -9,7 +9,7 @@ const render = (prop: Prop) => (
   <div className={style.taskCard}>
     <p className={style.title}>{prop.title}</p>
     <div>
-      <Label text="ラベル1" color="red" />
+      <Label text="ラベル1" color="#008800" />
     </div>
   </div>
 );
