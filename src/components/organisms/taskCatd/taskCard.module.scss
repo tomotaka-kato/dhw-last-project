@@ -6,10 +6,12 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px 5px;
+  cursor: pointer;
+  user-select: none;
 
   .title {
     margin: 0;
-    font-size: 18pt;
+    font-size: 18px;
     color: #333;
     font-weight: bold;
   }

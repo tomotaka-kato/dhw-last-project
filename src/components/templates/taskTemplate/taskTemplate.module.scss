@@ -1,8 +1,7 @@
 .main {
-
   .taskArea {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
 
     .board {
@@ -10,7 +9,11 @@
       width: 272px;
       min-height: 100px;
       border-radius: 5px;
+      margin: 0 30px;
+
+      p {
+        font-weight: bold;
+      }
     }
   }
-
 }

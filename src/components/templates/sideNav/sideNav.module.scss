@@ -1,18 +1,27 @@
 .sideNav {
   color: #a6a6a6;
-  font-size: 14pt;
+  font-size: 18px;
   border-right: 1px solid #343434;
   overflow-y: auto;
   padding-bottom: 60px;
   position: relative;
 
   h1 {
-    font-size: 34pt;
-    color: #89C606;
+    font-size: 34px;
+    color: #89c606;
   }
 
   ul {
     list-style: none;
+  }
+
+  .graph {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
   }
 
   .userArea {
@@ -23,5 +32,4 @@
     width: 100%;
     border-top: 1px solid #343434;
   }
-
 }
