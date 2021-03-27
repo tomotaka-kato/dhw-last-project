@@ -1,6 +1,5 @@
 import TaskCard from '../../organisms/taskCatd/TaskCard';
 import style from './taskTemplate.module.scss';
-
 interface Prop {
   className: string;
 }

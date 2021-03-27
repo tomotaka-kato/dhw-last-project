@@ -2,6 +2,7 @@ import style from './sideNav.module.scss';
 import projectIcon from '../../../assets/icon_project.svg';
 import TagIcon from 'components/atoms/tagIcon/TagIcon';
 import graphIcon from '../../../assets/icon_graph.svg';
+import { Link } from 'react-router-dom';
 
 interface Prop {
   className: string;
@@ -9,7 +10,9 @@ interface Prop {
 
 const render = (prop: Prop) => (
   <nav className={prop.className + ' ' + style.sideNav}>
-    <h1>kālailai</h1>
+    <Link to="/" className={style.link}>
+      <h1>kālailai</h1>
+    </Link>
 
     <p>プロジェクト</p>
     <ul>
@@ -61,7 +64,9 @@ const render = (prop: Prop) => (
 
     <p className={style.graph}>
       <img width="23" height="23" src={graphIcon} alt="" />
-      グラフ表示
+      <Link to="Graph" className={style.link}>
+        グラフ表示
+      </Link>
     </p>
 
     <div className={style.userArea}>

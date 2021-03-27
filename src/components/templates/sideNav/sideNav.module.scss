@@ -18,9 +18,16 @@
   .graph {
     display: flex;
     align-items: center;
+    position: relative;
 
     img {
       margin-right: 10px;
+    }
+
+    .link {
+      height: 100%;
+      width: 100%;
+      color: #a6a6a6;
     }
   }
 
@@ -31,5 +38,12 @@
     height: 50px;
     width: 100%;
     border-top: 1px solid #343434;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
+
+  .link {
+    text-decoration: none;
   }
 }
