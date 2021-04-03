@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import { buildGraphData, buildGraphOption } from 'services/GraphDataBuilder';
+import { getProjects, getLabels, getTasks } from 'repositories/MockData';
 
 import Chip from '@material-ui/core/Chip';
 import {
@@ -27,18 +28,7 @@ const graphData = buildGraphData();
 const graphOption = buildGraphOption();
 
 // プロジェクト一覧
-const projectNames = [
-  'プロジェクト1',
-  'プロジェクト2',
-  'プロジェクト3',
-  'プロジェクト4',
-  'プロジェクト5',
-  'プロジェクト6',
-  'プロジェクト7',
-  'プロジェクト8',
-  'プロジェクト9',
-  'プロジェクト10',
-];
+const projects = getProjects();
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -73,10 +63,10 @@ const MenuProps = {
   },
 };
 
-function getStyles(name: string, personName: string[], theme: Theme) {
+function getStyles(id: string, theme: Theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      projects.map((project) => project.id).indexOf(id) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -86,10 +76,10 @@ const Render = (prop: Prop) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [projectName, setProjectName] = React.useState<string[]>([]);
+  const [projectIds, setProjectIds] = React.useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setProjectName(event.target.value as string[]);
+    setProjectIds(event.target.value as string[]);
   };
 
   return (
@@ -100,25 +90,29 @@ const Render = (prop: Prop) => {
           labelId="demo-mutiple-chip-label"
           id="demo-mutiple-chip"
           multiple
-          value={projectName}
+          value={projectIds}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={(selected) => (
             <div className={classes.chips}>
               {(selected as string[]).map((value) => (
-                <Chip key={value} label={value} className={classes.chip} />
+                <Chip
+                  key={value}
+                  label={projects.filter((p) => p.id === value)[0].name}
+                  className={classes.chip}
+                />
               ))}
             </div>
           )}
           MenuProps={MenuProps}
         >
-          {projectNames.map((name) => (
+          {projects.map((project) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, projectName, theme)}
+              key={project.id}
+              value={project.id}
+              style={getStyles(project.id, theme)}
             >
-              {name}
+              {project.name}
             </MenuItem>
           ))}
         </Select>
