@@ -1,3 +1,4 @@
+import 'date-fns';
 import { Bar } from 'react-chartjs-2';
 import style from './graphTemplate.module.scss';
 import Select from '@material-ui/core/Select';
@@ -5,6 +6,11 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 import { buildGraphData, buildGraphOption } from 'services/GraphDataBuilder';
 import { getProjects, getLabels, getTasks } from 'repositories/MockData';
 
@@ -29,6 +35,8 @@ const graphOption = buildGraphOption();
 
 // プロジェクト一覧
 const projects = getProjects();
+// ラベル一覧
+const labels = getLabels();
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -63,10 +71,10 @@ const MenuProps = {
   },
 };
 
-function getStyles(id: string, theme: Theme) {
+function getStyles(list: any[], id: string, theme: Theme) {
   return {
     fontWeight:
-      projects.map((project) => project.id).indexOf(id) === -1
+      list.map((l: any) => l.id).indexOf(id) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -76,10 +84,32 @@ const Render = (prop: Prop) => {
   const classes = useStyles();
   const theme = useTheme();
 
+  // プロジェクト選択
   const [projectIds, setProjectIds] = React.useState<string[]>([]);
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleProjectChange = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ) => {
     setProjectIds(event.target.value as string[]);
+  };
+
+  // ラベル選択
+  const [labelIds, setLabelIds] = React.useState<string[]>([]);
+  const handleLabelChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setLabelIds(event.target.value as string[]);
+  };
+
+  // 日付選択
+  const [fromDate, setFromDate] = React.useState<Date | null>(
+    new Date('2020-05-01')
+  );
+  const handleFromDateChange = (date: Date | null) => {
+    setFromDate(date);
+  };
+  const [toDate, setToDate] = React.useState<Date | null>(
+    new Date('2020-06-30')
+  );
+  const handleToDateChange = (date: Date | null) => {
+    setToDate(date);
   };
 
   return (
@@ -91,7 +121,7 @@ const Render = (prop: Prop) => {
           id="demo-mutiple-chip"
           multiple
           value={projectIds}
-          onChange={handleChange}
+          onChange={handleProjectChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={(selected) => (
             <div className={classes.chips}>
@@ -110,13 +140,77 @@ const Render = (prop: Prop) => {
             <MenuItem
               key={project.id}
               value={project.id}
-              style={getStyles(project.id, theme)}
+              style={getStyles(projects, project.id, theme)}
             >
               {project.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
+
+      <FormControl className={classes.formControl}>
+        <InputLabel id="label-mutiple-chip-label">ラベル</InputLabel>
+        <Select
+          labelId="label-mutiple-chip-label"
+          id="label-mutiple-chip-label"
+          multiple
+          value={labelIds}
+          onChange={handleLabelChange}
+          input={<Input id="select-multiple-chip-label" />}
+          renderValue={(selected) => (
+            <div className={classes.chips}>
+              {(selected as string[]).map((value) => (
+                <Chip
+                  key={value}
+                  label={labels.filter((l) => l.id === value)[0].name}
+                  className={classes.chip}
+                />
+              ))}
+            </div>
+          )}
+          MenuProps={MenuProps}
+        >
+          {labels.map((label) => (
+            <MenuItem
+              key={label.id}
+              value={label.id}
+              style={getStyles(labels, label.id, theme)}
+            >
+              {label.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          margin="normal"
+          id="fromdate-picker-dialog"
+          label="From"
+          format="yyyy/MM/dd"
+          value={fromDate}
+          onChange={handleFromDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+      </MuiPickersUtilsProvider>
+
+      <span>　　</span>
+
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          margin="normal"
+          id="fromdate-picker-dialog"
+          label="To"
+          format="yyyy/MM/dd"
+          value={toDate}
+          onChange={handleToDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+      </MuiPickersUtilsProvider>
       <div className={style.graphArea}>
         <Bar data={graphData} options={graphOption} />
       </div>
