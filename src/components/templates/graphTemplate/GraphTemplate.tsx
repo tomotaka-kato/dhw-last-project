@@ -5,6 +5,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { buildGraphData, buildGraphOption } from 'services/GraphDataBuilder';
 
 import Chip from '@material-ui/core/Chip';
 import {
@@ -20,88 +21,10 @@ interface Prop {
   className: string;
 }
 
-const graphData = {
-  labels: [
-    // 軸ラベル
-    // 各ラベルを配列にすることで軸ラベルが改行されて表示される
-    ['2019年', '1月'],
-    ['2019年', '2月'],
-    ['2019年', '3月'],
-    ['2019年', '4月'],
-    ['2019年', '5月'],
-    ['2019年', '6月'],
-    ['2019年', '7月'],
-    ['2019年', '8月'],
-    ['2019年', '9月'],
-    ['2019年', '10月'],
-    ['2019年', '11月'],
-    ['2019年', '12月'],
-  ],
-  datasets: [
-    // 表示するデータセット
-    {
-      data: [
-        16,
-        42,
-        117.5,
-        90.5,
-        120.5,
-        225,
-        193,
-        110,
-        197,
-        529.5,
-        156.5,
-        76.5,
-      ],
-      backgroundColor: 'rgba(30, 144, 255, 1)', // <--追加
-      label: '予定',
-    },
-    {
-      data: [
-        118,
-        144,
-        219.5,
-        92.105,
-        122.105,
-        327,
-        295,
-        212,
-        299,
-        631.5,
-        258.5,
-        178.5,
-      ],
-      backgroundColor: 'rgba(255, 144, 30, 1)', // <--追加
-      label: '実績',
-    },
-  ],
-};
+const graphData = buildGraphData();
 
 /** グラフオプション */
-const graphOption = {
-  scales: {
-    xAxes: [
-      // x軸設定
-      {
-        scaleLabel: {
-          // 軸ラベル設定
-          display: true,
-          labelString: '2019年',
-        },
-      },
-    ],
-    yAxes: [
-      // y軸設定
-      {
-        scaleLabel: {
-          display: true,
-          labelString: '合計降水量(mm)',
-        },
-      },
-    ],
-  },
-};
+const graphOption = buildGraphOption();
 
 // プロジェクト一覧
 const projectNames = [
