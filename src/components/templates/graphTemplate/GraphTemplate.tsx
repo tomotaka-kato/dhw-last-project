@@ -149,124 +149,126 @@ const Render = (prop: Prop) => {
 
   return (
     <main className={prop.className + ' ' + style.main}>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="label-mutiple-chip-graphType">横軸</InputLabel>
-        <Select
-          labelId="label-mutiple-chip-graphType"
-          id="label-mutiple-chip-graphType"
-          value={graphTypeId}
-          onChange={handleGraphTypeChange}
-          input={<Input id="select-multiple-chip-graphType" />}
-          MenuProps={MenuProps}
-        >
-          {graphType.map((g) => (
-            <MenuItem
-              key={g.id}
-              value={g.id}
-              style={getStyles(graphType, g.id, theme)}
-            >
-              {g.text}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-chip-label">プロジェクト名</InputLabel>
-        <Select
-          labelId="demo-mutiple-chip-label"
-          id="demo-mutiple-chip"
-          multiple
-          value={projectIds}
-          onChange={handleProjectChange}
-          input={<Input id="select-multiple-chip" />}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {(selected as string[]).map((value) => (
-                <Chip
-                  key={value}
-                  label={projects.filter((p) => p.id === value)[0].name}
-                  className={classes.chip}
-                />
-              ))}
-            </div>
-          )}
-          MenuProps={MenuProps}
-        >
-          {projects.map((project) => (
-            <MenuItem
-              key={project.id}
-              value={project.id}
-              style={getStyles(projects, project.id, theme)}
-            >
-              {project.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <div className={style.formArea}>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="label-mutiple-chip-graphType">横軸</InputLabel>
+          <Select
+            labelId="label-mutiple-chip-graphType"
+            id="label-mutiple-chip-graphType"
+            value={graphTypeId}
+            onChange={handleGraphTypeChange}
+            input={<Input id="select-multiple-chip-graphType" />}
+            MenuProps={MenuProps}
+          >
+            {graphType.map((g) => (
+              <MenuItem
+                key={g.id}
+                value={g.id}
+                style={getStyles(graphType, g.id, theme)}
+              >
+                {g.text}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-mutiple-chip-label">プロジェクト名</InputLabel>
+          <Select
+            labelId="demo-mutiple-chip-label"
+            id="demo-mutiple-chip"
+            multiple
+            value={projectIds}
+            onChange={handleProjectChange}
+            input={<Input id="select-multiple-chip" />}
+            renderValue={(selected) => (
+              <div className={classes.chips}>
+                {(selected as string[]).map((value) => (
+                  <Chip
+                    key={value}
+                    label={projects.filter((p) => p.id === value)[0].name}
+                    className={classes.chip}
+                  />
+                ))}
+              </div>
+            )}
+            MenuProps={MenuProps}
+          >
+            {projects.map((project) => (
+              <MenuItem
+                key={project.id}
+                value={project.id}
+                style={getStyles(projects, project.id, theme)}
+              >
+                {project.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
 
-      <FormControl className={classes.formControl}>
-        <InputLabel id="label-mutiple-chip-label">ラベル</InputLabel>
-        <Select
-          labelId="label-mutiple-chip-label"
-          id="label-mutiple-chip-label"
-          multiple
-          value={labelIds}
-          onChange={handleLabelChange}
-          input={<Input id="select-multiple-chip-label" />}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {(selected as string[]).map((value) => (
-                <Chip
-                  key={value}
-                  label={labels.filter((l) => l.id === value)[0].name}
-                  className={classes.chip}
-                />
-              ))}
-            </div>
-          )}
-          MenuProps={MenuProps}
-        >
-          {labels.map((label) => (
-            <MenuItem
-              key={label.id}
-              value={label.id}
-              style={getStyles(labels, label.id, theme)}
-            >
-              {label.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="label-mutiple-chip-label">ラベル</InputLabel>
+          <Select
+            labelId="label-mutiple-chip-label"
+            id="label-mutiple-chip-label"
+            multiple
+            value={labelIds}
+            onChange={handleLabelChange}
+            input={<Input id="select-multiple-chip-label" />}
+            renderValue={(selected) => (
+              <div className={classes.chips}>
+                {(selected as string[]).map((value) => (
+                  <Chip
+                    key={value}
+                    label={labels.filter((l) => l.id === value)[0].name}
+                    className={classes.chip}
+                  />
+                ))}
+              </div>
+            )}
+            MenuProps={MenuProps}
+          >
+            {labels.map((label) => (
+              <MenuItem
+                key={label.id}
+                value={label.id}
+                style={getStyles(labels, label.id, theme)}
+              >
+                {label.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          margin="normal"
-          id="fromdate-picker-dialog"
-          label="From"
-          format="yyyy/MM/dd"
-          value={fromDate}
-          onChange={handleFromDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-      </MuiPickersUtilsProvider>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            margin="normal"
+            id="fromdate-picker-dialog"
+            label="From"
+            format="yyyy/MM/dd"
+            value={fromDate}
+            onChange={handleFromDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />
+        </MuiPickersUtilsProvider>
 
-      <span>　　</span>
+        <span>　　</span>
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          margin="normal"
-          id="fromdate-picker-dialog"
-          label="To"
-          format="yyyy/MM/dd"
-          value={toDate}
-          onChange={handleToDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-      </MuiPickersUtilsProvider>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            margin="normal"
+            id="fromdate-picker-dialog"
+            label="To"
+            format="yyyy/MM/dd"
+            value={toDate}
+            onChange={handleToDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />
+        </MuiPickersUtilsProvider>
+      </div>
 
       <div className={style.graphArea}>
         <Bar data={graphData} options={graphOption} />

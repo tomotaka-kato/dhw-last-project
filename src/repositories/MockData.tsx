@@ -29,10 +29,10 @@ export interface ILabel {
 
 export const getProjects = (): IProject[] => [
   { id: '1', name: 'デジハリ卒業制作', color: 'orange' },
-  { id: '2', name: 'すごいプロジェクト', color: 'orange' },
-  { id: '3', name: 'かっこいいアプリ開発', color: 'orange' },
-  { id: '4', name: 'いけてる何か', color: 'orange' },
-  { id: '5', name: 'なんか適当', color: 'orange' },
+  { id: '2', name: 'すごいプロジェクト', color: 'pink' },
+  { id: '3', name: 'かっこいいアプリ', color: 'skyblue' },
+  { id: '4', name: 'いけてる何か', color: 'purple' },
+  { id: '5', name: 'なんか適当', color: 'lemonchiffon' },
 ];
 
 export const getLabels = (): ILabel[] => [

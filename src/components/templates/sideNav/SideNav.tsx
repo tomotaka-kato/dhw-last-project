@@ -1,6 +1,7 @@
 import style from './sideNav.module.scss';
 import projectIcon from '../../../assets/icon_project.svg';
 import TagIcon from 'components/atoms/tagIcon/TagIcon';
+import ProjectIcon from 'components/atoms/projectIcon/projectIcon';
 import graphIcon from '../../../assets/icon_graph.svg';
 import { Link } from 'react-router-dom';
 
@@ -17,24 +18,24 @@ const render = (prop: Prop) => (
     <p>プロジェクト</p>
     <ul>
       <li>
-        <img width="20" height="13" src={projectIcon} alt="" />
-        project
+        <ProjectIcon color="orange" />
+        デジハリ卒業制作
       </li>
       <li>
-        <img width="20" height="13" src={projectIcon} alt="" />
-        project
+        <ProjectIcon color="pink" />
+        すごいプロジェクト
       </li>
       <li>
-        <img width="20" height="13" src={projectIcon} alt="" />
-        project
+        <ProjectIcon color="skyblue" />
+        かっこいいアプリ
       </li>
       <li>
-        <img width="20" height="13" src={projectIcon} alt="" />
-        project
+        <ProjectIcon color="purple" />
+        いけてる何か
       </li>
       <li>
-        <img width="20" height="13" src={projectIcon} alt="" />
-        project
+        <ProjectIcon color="lemonchiffon" />
+        なんか適当
       </li>
     </ul>
 
