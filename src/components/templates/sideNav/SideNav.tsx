@@ -1,5 +1,4 @@
 import style from './sideNav.module.scss';
-import projectIcon from '../../../assets/icon_project.svg';
 import TagIcon from 'components/atoms/tagIcon/TagIcon';
 import ProjectIcon from 'components/atoms/projectIcon/projectIcon';
 import graphIcon from '../../../assets/icon_graph.svg';
