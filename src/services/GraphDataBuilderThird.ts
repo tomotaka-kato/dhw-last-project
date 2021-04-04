@@ -13,12 +13,12 @@ export const buildData = () => {
       // 表示するデータセット
       {
         data: [150, 117.5],
-        backgroundColor: 'rgba(30, 144, 255, 1)', // <--追加
+        backgroundColor: 'rgba(80, 80, 80, 1)', // <--追加
         label: '予定',
       },
       {
         data: [144, 219.5],
-        backgroundColor: 'rgba(255, 144, 30, 1)', // <--追加
+        backgroundColor: '#89c606', // <--追加
         label: '実績',
       },
     ],

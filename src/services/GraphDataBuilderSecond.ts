@@ -36,7 +36,7 @@ export const buildData = () => {
           156.5,
           76.5,
         ],
-        backgroundColor: 'rgba(30, 144, 255, 1)', // <--追加
+        backgroundColor: 'rgba(80, 80, 80, 1)', // <--追加
         label: '予定',
       },
       {
@@ -54,7 +54,7 @@ export const buildData = () => {
           258.5,
           178.5,
         ],
-        backgroundColor: 'rgba(255, 144, 30, 1)', // <--追加
+        backgroundColor: '#89c606', // <--追加
         label: '実績',
       },
     ],
