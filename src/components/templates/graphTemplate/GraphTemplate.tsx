@@ -11,7 +11,11 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { buildGraphData, buildGraphOption } from 'services/GraphDataBuilder';
+import * as graphDataFirstBuilder from 'services/GraphDataBuilderFirst';
+import * as graphDataSecondBuilder from 'services/GraphDataBuilderSecond';
+import * as graphDataThirdBuilder from 'services/GraphDataBuilderThird';
+import * as graphDataForthBuilder from 'services/GraphDataBuilderForth';
+import * as graphDataFifthBuilder from 'services/GraphDataBuilderFifth';
 import { getProjects, getLabels, getTasks } from 'repositories/MockData';
 
 import Chip from '@material-ui/core/Chip';
@@ -28,15 +32,17 @@ interface Prop {
   className: string;
 }
 
-const graphData = buildGraphData();
-
-/** グラフオプション */
-const graphOption = buildGraphOption();
-
 // プロジェクト一覧
 const projects = getProjects();
 // ラベル一覧
 const labels = getLabels();
+
+// グラフ種類
+const graphType = [
+  { id: '1', text: '月毎' },
+  { id: '2', text: 'ラベル毎' },
+  { id: '3', text: 'タスク毎' },
+];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -100,20 +106,70 @@ const Render = (prop: Prop) => {
 
   // 日付選択
   const [fromDate, setFromDate] = React.useState<Date | null>(
-    new Date('2020-05-01')
+    new Date('2020-04-01')
   );
   const handleFromDateChange = (date: Date | null) => {
     setFromDate(date);
   };
   const [toDate, setToDate] = React.useState<Date | null>(
-    new Date('2020-06-30')
+    new Date('2021-03-31')
   );
   const handleToDateChange = (date: Date | null) => {
     setToDate(date);
   };
 
+  // グラフ種類
+  const [graphTypeId, setGraphTypeId] = React.useState<string>('1');
+  const handleGraphTypeChange = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ) => {
+    setGraphTypeId(event.target.value as string);
+  };
+
+  let graphData;
+  let graphOption;
+
+  // 表示するグラフデータを変更
+  if (toDate?.getMonth() === 7) {
+    graphOption = graphDataFifthBuilder.buildOption();
+    graphData = graphDataFifthBuilder.buildData();
+  } else if (graphTypeId === '2') {
+    graphOption = graphDataForthBuilder.buildOption();
+    graphData = graphDataForthBuilder.buildData();
+  } else if (toDate?.getMonth() === 5) {
+    graphOption = graphDataThirdBuilder.buildOption();
+    graphData = graphDataThirdBuilder.buildData();
+  } else if (projectIds.length > 0) {
+    graphOption = graphDataSecondBuilder.buildOption();
+    graphData = graphDataSecondBuilder.buildData();
+  } else {
+    graphOption = graphDataFirstBuilder.buildOption();
+    graphData = graphDataFirstBuilder.buildData();
+  }
+
   return (
     <main className={prop.className + ' ' + style.main}>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="label-mutiple-chip-graphType">横軸</InputLabel>
+        <Select
+          labelId="label-mutiple-chip-graphType"
+          id="label-mutiple-chip-graphType"
+          value={graphTypeId}
+          onChange={handleGraphTypeChange}
+          input={<Input id="select-multiple-chip-graphType" />}
+          MenuProps={MenuProps}
+        >
+          {graphType.map((g) => (
+            <MenuItem
+              key={g.id}
+              value={g.id}
+              style={getStyles(graphType, g.id, theme)}
+            >
+              {g.text}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-mutiple-chip-label">プロジェクト名</InputLabel>
         <Select
@@ -211,6 +267,7 @@ const Render = (prop: Prop) => {
           }}
         />
       </MuiPickersUtilsProvider>
+
       <div className={style.graphArea}>
         <Bar data={graphData} options={graphOption} />
       </div>

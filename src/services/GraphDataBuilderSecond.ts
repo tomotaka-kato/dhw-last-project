@@ -1,20 +1,23 @@
-export const buildGraphData = () => {
+/**
+ * 最初のプロジェクトの一年分
+ */
+export const buildData = () => {
   return {
     labels: [
       // 軸ラベル
       // 各ラベルを配列にすることで軸ラベルが改行されて表示される
-      ['2019年', '1月'],
-      ['2019年', '2月'],
-      ['2019年', '3月'],
-      ['2019年', '4月'],
-      ['2019年', '5月'],
-      ['2019年', '6月'],
-      ['2019年', '7月'],
-      ['2019年', '8月'],
-      ['2019年', '9月'],
-      ['2019年', '10月'],
-      ['2019年', '11月'],
-      ['2019年', '12月'],
+      ['2020年', '4月'],
+      ['2020年', '5月'],
+      ['2020年', '6月'],
+      ['2020年', '7月'],
+      ['2020年', '8月'],
+      ['2020年', '9月'],
+      ['2020年', '10月'],
+      ['2020年', '11月'],
+      ['2020年', '12月'],
+      ['2021年', ' 1月'],
+      ['2021年', ' 2月'],
+      ['2021年', ' 3月'],
     ],
     datasets: [
       // 表示するデータセット
@@ -58,7 +61,7 @@ export const buildGraphData = () => {
   };
 };
 
-export const buildGraphOption = () => {
+export const buildOption = () => {
   return {
     scales: {
       xAxes: [
@@ -67,7 +70,7 @@ export const buildGraphOption = () => {
           scaleLabel: {
             // 軸ラベル設定
             display: true,
-            labelString: '2019年',
+            labelString: '月',
           },
         },
       ],
@@ -76,7 +79,7 @@ export const buildGraphOption = () => {
         {
           scaleLabel: {
             display: true,
-            labelString: '合計降水量(mm)',
+            labelString: '工数',
           },
         },
       ],
