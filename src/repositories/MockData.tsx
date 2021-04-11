@@ -31,7 +31,7 @@ export const getProjects = (): IProject[] => [
   { id: '1', name: 'デジハリ卒業制作', color: 'orange' },
   { id: '2', name: 'すごいプロジェクト', color: 'pink' },
   { id: '3', name: 'かっこいいアプリ', color: 'skyblue' },
-  { id: '4', name: 'いけてる何か', color: 'purple' },
+  { id: '4', name: 'いけてる何か', color: 'lightgreen' },
   { id: '5', name: 'なんか適当', color: 'lemonchiffon' },
 ];
 
@@ -39,6 +39,8 @@ export const getLabels = (): ILabel[] => [
   { id: '1', name: '新規機能開発', color: 'orange' },
   { id: '2', name: 'バグフィックス', color: '#ffaaaa' },
   { id: '3', name: '新人実装', color: 'lightgreen' },
+  { id: '4', name: '調査', color: 'skyblue' },
+  { id: '5', name: '設計', color: 'lemonchiffon' },
 ];
 
 export const getTasks = (): ITask[] => [

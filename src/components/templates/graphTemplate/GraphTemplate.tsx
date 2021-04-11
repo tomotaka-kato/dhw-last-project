@@ -190,8 +190,6 @@ const Render = (prop: Prop) => {
                 (p) => p.id === (selected as string[])[0]
               );
 
-              const multipleText =
-                (selected as string[]).length > 1 ? '(..他)' : '';
               return (
                 <>
                   <Chip
@@ -229,8 +227,6 @@ const Render = (prop: Prop) => {
                 (l) => l.id === (selected as string[])[0]
               );
 
-              const multipleText =
-                (selected as string[]).length > 1 ? '(..他)' : '';
               return (
                 <>
                   <Chip

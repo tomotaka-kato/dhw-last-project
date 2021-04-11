@@ -3,6 +3,7 @@ import TagIcon from 'components/atoms/tagIcon/TagIcon';
 import ProjectIcon from 'components/atoms/projectIcon/projectIcon';
 import graphIcon from '../../../assets/icon_graph.svg';
 import { Link } from 'react-router-dom';
+import { getProjects, getLabels } from 'repositories/MockData';
 
 interface Prop {
   className: string;
@@ -14,52 +15,24 @@ const render = (prop: Prop) => (
       <h1>kālailai</h1>
     </Link>
 
-    <p>プロジェクト</p>
+    <p className={style.groupTitle}>プロジェクト</p>
     <ul>
-      <li>
-        <ProjectIcon color="orange" />
-        デジハリ卒業制作
-      </li>
-      <li>
-        <ProjectIcon color="pink" />
-        すごいプロジェクト
-      </li>
-      <li>
-        <ProjectIcon color="skyblue" />
-        かっこいいアプリ
-      </li>
-      <li>
-        <ProjectIcon color="purple" />
-        いけてる何か
-      </li>
-      <li>
-        <ProjectIcon color="lemonchiffon" />
-        なんか適当
-      </li>
+      {getProjects().map((project) => (
+        <li key={project.id}>
+          <ProjectIcon color={project.color} />
+          {project.name}
+        </li>
+      ))}
     </ul>
 
-    <p>ラベル</p>
+    <p className={style.groupTitle}>ラベル</p>
     <ul>
-      <li>
-        <TagIcon color="red" />
-        label
-      </li>
-      <li>
-        <TagIcon color="blue" />
-        label
-      </li>
-      <li>
-        <TagIcon color="green" />
-        label
-      </li>
-      <li>
-        <TagIcon color="orange" />
-        label
-      </li>
-      <li>
-        <TagIcon color="pink" />
-        label
-      </li>
+      {getLabels().map((label) => (
+        <li key={label.id}>
+          <TagIcon color={label.color} />
+          {label.name}
+        </li>
+      ))}
     </ul>
 
     <p className={style.graph}>

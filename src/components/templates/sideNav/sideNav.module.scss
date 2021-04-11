@@ -1,8 +1,10 @@
 .sideNav {
-  color: #a6a6a6;
+  box-sizing: border-box;
+  color: white;
   font-size: 18px;
   border-right: 1px solid #343434;
   overflow-y: auto;
+  padding-left: 20px;
   padding-bottom: 60px;
   position: relative;
 
@@ -11,8 +13,14 @@
     color: #89c606;
   }
 
+  .groupTitle {
+    margin: 0;
+  }
+
   ul {
+    margin: 5px 0 50px 0;
     list-style: none;
+    padding-left: 20px;
   }
 
   .graph {
@@ -27,7 +35,7 @@
     .link {
       height: 100%;
       width: 100%;
-      color: #a6a6a6;
+      color: white;
 
       &:hover {
         background-color: #262626;
