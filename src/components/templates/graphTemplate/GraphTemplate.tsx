@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       minWidth: 200,
       maxWidth: 300,
-      height: 100,
+      // height: 50,
+      // maxHeight: 100,
     },
     chips: {
       display: 'flex',
@@ -149,6 +150,29 @@ const Render = (prop: Prop) => {
 
   return (
     <main className={prop.className + ' ' + style.main}>
+      <div>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="label-mutiple-chip-graphType">グラフ種類</InputLabel>
+          <Select
+            labelId="label-mutiple-chip-graphType"
+            id="label-mutiple-chip-graphType"
+            value={graphTypeId}
+            onChange={handleGraphTypeChange}
+            input={<Input id="select-multiple-chip-graphType" />}
+            MenuProps={MenuProps}
+          >
+            {graphType.map((g) => (
+              <MenuItem
+                key={g.id}
+                value={g.id}
+                style={getStyles(graphType, g.id, theme)}
+              >
+                {g.text}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
       <div className={style.formArea}>
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-mutiple-chip-label">プロジェクト名</InputLabel>
@@ -251,29 +275,6 @@ const Render = (prop: Prop) => {
 
       <div className={style.graphArea}>
         <Bar data={graphData} options={graphOption} />
-      </div>
-      <div>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="label-mutiple-chip-graphType">横軸</InputLabel>
-          <Select
-            labelId="label-mutiple-chip-graphType"
-            id="label-mutiple-chip-graphType"
-            value={graphTypeId}
-            onChange={handleGraphTypeChange}
-            input={<Input id="select-multiple-chip-graphType" />}
-            MenuProps={MenuProps}
-          >
-            {graphType.map((g) => (
-              <MenuItem
-                key={g.id}
-                value={g.id}
-                style={getStyles(graphType, g.id, theme)}
-              >
-                {g.text}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
       </div>
     </main>
   );

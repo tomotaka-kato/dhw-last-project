@@ -1,9 +1,14 @@
 .main {
+  padding: 10px 50px;
+
   .formArea {
-    height: 150px;
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 50px;
   }
   .graphArea {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     background-color: #262626;
   }
