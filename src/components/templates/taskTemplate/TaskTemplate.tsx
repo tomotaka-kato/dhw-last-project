@@ -1,6 +1,7 @@
 import TaskCard from '../../organisms/taskCatd/TaskCard';
 import style from './taskTemplate.module.scss';
-import { getLabels } from 'repositories/MockData';
+import ProjectIcon from 'components/atoms/projectIcon/projectIcon';
+import { getProjects, getLabels } from 'repositories/MockData';
 
 interface Prop {
   className: string;
@@ -10,7 +11,10 @@ const labels = getLabels();
 
 const render = (prop: Prop) => (
   <main className={prop.className + ' ' + style.main}>
-    <p>プロジェクトE</p>
+    <h2 className={style.projectName}>
+      <ProjectIcon color={getProjects()[0].color} />
+      デジハリ卒業制作
+    </h2>
     <div className={style.taskArea}>
       <div className={style.board}>
         <p>未着手</p>
