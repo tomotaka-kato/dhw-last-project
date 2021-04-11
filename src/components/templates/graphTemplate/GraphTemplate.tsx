@@ -6,6 +6,8 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import Checkbox from '@material-ui/core/Checkbox';
+import ListItemText from '@material-ui/core/ListItemText';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -183,26 +185,31 @@ const Render = (prop: Prop) => {
             value={projectIds}
             onChange={handleProjectChange}
             input={<Input id="select-multiple-chip" />}
-            renderValue={(selected) => (
-              <div className={classes.chips}>
-                {(selected as string[]).map((value) => (
+            renderValue={(selected) => {
+              const project = projects.find(
+                (p) => p.id === (selected as string[])[0]
+              );
+
+              const multipleText =
+                (selected as string[]).length > 1 ? '(..他)' : '';
+              return (
+                <>
                   <Chip
-                    key={value}
-                    label={projects.filter((p) => p.id === value)[0].name}
+                    label={project ? project.name : ''}
                     className={classes.chip}
                   />
-                ))}
-              </div>
-            )}
+                  {(selected as string[]).length > 1 && (
+                    <Chip label={'...他'} className={classes.chip} />
+                  )}
+                </>
+              );
+            }}
             MenuProps={MenuProps}
           >
             {projects.map((project) => (
-              <MenuItem
-                key={project.id}
-                value={project.id}
-                style={getStyles(projects, project.id, theme)}
-              >
-                {project.name}
+              <MenuItem key={project.id} value={project.id}>
+                <Checkbox checked={projectIds.indexOf(project.id) > -1} />
+                <ListItemText primary={project.name} />
               </MenuItem>
             ))}
           </Select>
@@ -217,26 +224,31 @@ const Render = (prop: Prop) => {
             value={labelIds}
             onChange={handleLabelChange}
             input={<Input id="select-multiple-chip-label" />}
-            renderValue={(selected) => (
-              <div className={classes.chips}>
-                {(selected as string[]).map((value) => (
+            renderValue={(selected) => {
+              const label = labels.find(
+                (l) => l.id === (selected as string[])[0]
+              );
+
+              const multipleText =
+                (selected as string[]).length > 1 ? '(..他)' : '';
+              return (
+                <>
                   <Chip
-                    key={value}
-                    label={labels.filter((l) => l.id === value)[0].name}
+                    label={label ? label.name : ''}
                     className={classes.chip}
                   />
-                ))}
-              </div>
-            )}
+                  {(selected as string[]).length > 1 && (
+                    <Chip label={'...他'} className={classes.chip} />
+                  )}
+                </>
+              );
+            }}
             MenuProps={MenuProps}
           >
             {labels.map((label) => (
-              <MenuItem
-                key={label.id}
-                value={label.id}
-                style={getStyles(labels, label.id, theme)}
-              >
-                {label.name}
+              <MenuItem key={label.id} value={label.id}>
+                <Checkbox checked={labelIds.indexOf(label.id) > -1} />
+                <ListItemText primary={label.name} />
               </MenuItem>
             ))}
           </Select>
