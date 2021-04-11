@@ -36,11 +36,12 @@ export const getProjects = (): IProject[] => [
 ];
 
 export const getLabels = (): ILabel[] => [
-  { id: '1', name: '新規機能開発', color: 'orange' },
+  { id: '1', name: '新規機能開発', color: 'darkorange' },
   { id: '2', name: 'バグフィックス', color: '#ffaaaa' },
-  { id: '3', name: '新人実装', color: 'lightgreen' },
-  { id: '4', name: '調査', color: 'skyblue' },
-  { id: '5', name: '設計', color: 'lemonchiffon' },
+  { id: '3', name: '新人実装', color: 'limegreen' },
+  { id: '4', name: '調査', color: 'deepskyblue' },
+  { id: '5', name: '設計', color: 'plum' },
+  { id: '6', name: 'var2.4', color: 'orangered' },
 ];
 
 export const getTasks = (): ITask[] => [

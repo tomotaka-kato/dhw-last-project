@@ -86,6 +86,8 @@ export const buildOption = () => {
         {
           ticks: {
             fontColor: '#ccc',
+            min: 0, //最小値
+            max: 300, //最大値
           },
           scaleLabel: {
             display: true,
