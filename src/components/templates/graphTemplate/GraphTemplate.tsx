@@ -18,7 +18,7 @@ import * as graphDataSecondBuilder from 'services/GraphDataBuilderSecond';
 import * as graphDataThirdBuilder from 'services/GraphDataBuilderThird';
 import * as graphDataForthBuilder from 'services/GraphDataBuilderForth';
 import * as graphDataFifthBuilder from 'services/GraphDataBuilderFifth';
-import { getProjects, getLabels, getTasks } from 'repositories/MockData';
+import { getProjects, getLabels } from 'repositories/MockData';
 
 import Chip from '@material-ui/core/Chip';
 import {

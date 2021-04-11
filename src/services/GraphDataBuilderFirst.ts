@@ -61,23 +61,36 @@ export const buildData = () => {
 
 export const buildOption = () => {
   return {
+    legend: {
+      labels: {
+        fontColor: 'white',
+      },
+    },
     scales: {
       xAxes: [
         // x軸設定
         {
+          ticks: {
+            fontColor: '#ccc',
+          },
           scaleLabel: {
             // 軸ラベル設定
             display: true,
             labelString: '月',
+            fontColor: 'white',
           },
         },
       ],
       yAxes: [
         // y軸設定
         {
+          ticks: {
+            fontColor: '#ccc',
+          },
           scaleLabel: {
             display: true,
             labelString: '工数',
+            fontColor: 'white',
           },
         },
       ],

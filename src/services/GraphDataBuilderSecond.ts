@@ -63,10 +63,18 @@ export const buildData = () => {
 
 export const buildOption = () => {
   return {
+    legend: {
+      labels: {
+        fontColor: 'white',
+      },
+    },
     scales: {
       xAxes: [
         // x軸設定
         {
+          ticks: {
+            fontColor: '#ccc',
+          },
           scaleLabel: {
             // 軸ラベル設定
             display: true,
@@ -77,6 +85,11 @@ export const buildOption = () => {
       yAxes: [
         // y軸設定
         {
+          ticks: {
+            fontColor: '#ccc',
+            min: 0, //最小値
+            max: 300, //最大値
+          },
           scaleLabel: {
             display: true,
             labelString: '工数',
