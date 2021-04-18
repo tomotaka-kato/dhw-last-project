@@ -38,13 +38,13 @@ export const buildOption = () => {
         // x軸設定
         {
           ticks: {
-            fontColor: '#ccc',
+            fontColor: 'white',
           },
           scaleLabel: {
             // 軸ラベル設定
             display: true,
             labelString: 'ラベル',
-            fontColor: '#ccc',
+            fontColor: 'white',
           },
         },
       ],
@@ -54,10 +54,10 @@ export const buildOption = () => {
           scaleLabel: {
             display: true,
             labelString: '工数',
-            fontColor: '#ccc',
+            fontColor: 'white',
           },
           ticks: {
-            fontColor: '#ccc',
+            fontColor: 'white',
             //最大値最小値設定
             min: 0, //最小値
             max: 170, //最大値

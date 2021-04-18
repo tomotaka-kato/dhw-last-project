@@ -29,8 +29,8 @@ export interface ILabel {
 
 export const getProjects = (): IProject[] => [
   { id: '1', name: 'デジハリ卒業制作', color: '#89c606' },
-  { id: '2', name: 'FireNoise', color: 'orangered' },
-  { id: '3', name: 'SayTag', color: '#517D78' },
+  { id: '2', name: 'Fire Noise', color: 'orangered' },
+  { id: '3', name: 'Saytag', color: '#517D78' },
   { id: '4', name: 'SnaPin', color: '#fabc32' },
   { id: '5', name: 'ResQ', color: '#6BB8FF' },
 ];
@@ -41,7 +41,7 @@ export const getLabels = (): ILabel[] => [
   { id: '3', name: '新人実装', color: 'limegreen' },
   { id: '4', name: '調査', color: 'deepskyblue' },
   { id: '5', name: '設計', color: 'plum' },
-  { id: '6', name: 'var2.4', color: 'orangered' },
+  { id: '6', name: 'ver2.4', color: 'orangered' },
 ];
 
 export const getTasks = (): ITask[] => [
