@@ -44,6 +44,7 @@ export const buildOption = () => {
             // 軸ラベル設定
             display: true,
             labelString: 'ラベル',
+            fontColor: '#ccc',
           },
         },
       ],
@@ -53,6 +54,7 @@ export const buildOption = () => {
           scaleLabel: {
             display: true,
             labelString: '工数',
+            fontColor: '#ccc',
           },
           ticks: {
             fontColor: '#ccc',

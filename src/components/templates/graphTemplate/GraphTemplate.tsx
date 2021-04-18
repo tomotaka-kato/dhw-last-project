@@ -18,6 +18,7 @@ import * as graphDataSecondBuilder from 'services/GraphDataBuilderSecond';
 import * as graphDataThirdBuilder from 'services/GraphDataBuilderThird';
 import * as graphDataForthBuilder from 'services/GraphDataBuilderForth';
 import * as graphDataFifthBuilder from 'services/GraphDataBuilderFifth';
+import * as graphDataSixthBuilder from 'services/GraphDataBuilderSixth';
 import { getProjects, getLabels } from 'repositories/MockData';
 
 import Chip from '@material-ui/core/Chip';
@@ -94,7 +95,7 @@ const Render = (prop: Prop) => {
   const theme = useTheme();
 
   // プロジェクト選択
-  const [projectIds, setProjectIds] = React.useState<string[]>([]);
+  const [projectIds, setProjectIds] = React.useState<string[]>(['1']);
   const handleProjectChange = (
     event: React.ChangeEvent<{ value: unknown }>
   ) => {
@@ -102,7 +103,7 @@ const Render = (prop: Prop) => {
   };
 
   // ラベル選択
-  const [labelIds, setLabelIds] = React.useState<string[]>([]);
+  const [labelIds, setLabelIds] = React.useState<string[]>(['1', '2', '3']);
   const handleLabelChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setLabelIds(event.target.value as string[]);
   };
@@ -115,7 +116,7 @@ const Render = (prop: Prop) => {
     setFromDate(date);
   };
   const [toDate, setToDate] = React.useState<Date | null>(
-    new Date('2021-03-31')
+    new Date('2020-06-30')
   );
   const handleToDateChange = (date: Date | null) => {
     setToDate(date);
@@ -134,8 +135,8 @@ const Render = (prop: Prop) => {
 
   // 表示するグラフデータを変更
   if (toDate?.getMonth() === 7) {
-    graphOption = graphDataFifthBuilder.buildOption();
-    graphData = graphDataFifthBuilder.buildData();
+    graphOption = graphDataSixthBuilder.buildOption();
+    graphData = graphDataSixthBuilder.buildData();
   } else if (graphTypeId === '2') {
     graphOption = graphDataForthBuilder.buildOption();
     graphData = graphDataForthBuilder.buildData();
