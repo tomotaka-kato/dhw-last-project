@@ -28,11 +28,11 @@ export interface ILabel {
 }
 
 export const getProjects = (): IProject[] => [
-  { id: '1', name: 'デジハリ卒業制作', color: 'orange' },
-  { id: '2', name: 'SnaPin', color: 'pink' },
-  { id: '3', name: 'FireSound', color: 'skyblue' },
-  { id: '4', name: 'tretrello', color: 'lightgreen' },
-  { id: '5', name: 'slalack', color: 'lemonchiffon' },
+  { id: '1', name: 'デジハリ卒業制作', color: '#89c606' },
+  { id: '2', name: 'FireNoise', color: 'orangered' },
+  { id: '3', name: 'SayTag', color: '#517D78' },
+  { id: '4', name: 'SnaPin', color: '#fabc32' },
+  { id: '5', name: 'ResQ', color: '#6BB8FF' },
 ];
 
 export const getLabels = (): ILabel[] => [
